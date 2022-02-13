@@ -1,0 +1,19 @@
+
+<?php
+
+/*Написать функцию которая проверяет является ли число простым или нет(продвинутый уровень - использовтаь рекурсию)
+*/
+
+function num(int $a, int $b): string {
+   if ($a % $b == 0) {
+       if ($a == $b ) {
+           return "'$a' is a prime number"; 
+           }
+           else {
+               return "'$a' is a complex number";
+           }
+   } else {
+       return "'$a' is a complex number";
+   }
+}
+    echo num(rand(), rand());
