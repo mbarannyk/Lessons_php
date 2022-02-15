@@ -4,14 +4,11 @@
 
 function div($a) {
     $b = [];
-    if ($a == 0) {
-        return "error";
-        }
     for ($i=1; $i<=$a; $i++){  
         if ($a % $i==0) {
             $b[] = $i; 
             }
-        }
+    }
 return ($b);
 }
 var_dump(div(10));
