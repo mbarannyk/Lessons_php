@@ -6,7 +6,6 @@
     */
     
     function fun($symbol, Int $num) {
-        $repeat = str_repeat($symbol, $num);
         for ($i = 1; $i <= $num; $i++) {
         $repeat = str_repeat($symbol, $i); {
         echo "$repeat\n";
