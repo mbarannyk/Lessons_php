@@ -1,0 +1,13 @@
+<?php
+
+/* Написать функцию которая принимает на первым аргументом строку, а вторым символ. 
+В случае если искомые символ присуствует в строке то заменить его встроке на такой же но в верхнем регистре
+*/
+
+function phrase($string, $symbol)  {
+    $uppersymbol = mb_convert_case($symbol, MB_CASE_UPPER_SIMPLE, "UTF-8");
+    $newfunction = str_replace($symbol, $uppersymbol, $string);
+    return ($newfunction);
+    }
+
+var_dump(phrase("string", "t"));
