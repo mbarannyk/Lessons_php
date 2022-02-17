@@ -1,0 +1,11 @@
+<?php
+
+/*написать функцию которая на вход принимает два аргумента - строки(отрывки из текста) и 
+сравнивает % совпадения. Если строки идентичны - 100%.
+*/
+
+function similar($string1, $string2) {
+$sim = similar_text($string1, $string2, $perc);
+echo "сходство: $sim ($perc %)\n";
+}
+    var_dump(similar("mama", "mamA"));
