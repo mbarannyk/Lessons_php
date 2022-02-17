@@ -6,7 +6,7 @@
 
     function str($string, $symbol) {
         for ($i = 1; $i <= strlen($string); $i++) {
-        echo "$symbol\n";
+        echo "$symbol";
         }
     }
     echo str("example", 'f');
