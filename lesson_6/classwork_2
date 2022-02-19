@@ -1,0 +1,12 @@
+<?php
+$a = [0, 1, 4, 5, 2, 3];
+$b = [];
+
+/*array_filter() стандартная пхп функция - отфильтровать >= 3*/
+
+function fun($a){
+         if ($a >= 3) {
+        return ($a);}
+}
+
+print_r(array_filter($a, "fun"));
