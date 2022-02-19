@@ -1,0 +1,40 @@
+<?php
+/*Написать в виде массивов список а) Название фильмов по звездным войнам, 
+б) места в кинотеатре, в) список оценок по предметам(предметы выбирайте сами)
+*/
+
+/*a)*/
+
+$starwars = ['Episode I: The Phantom Menace (1999)', 'Episode II: Attack of the Clones (2002)', 
+'Star Wars: The Clone Wars (2008-2020)', 'Episode III: Revenge of the Sith (2005)', 'Solo: A Star Wars Story (2018)',
+'Star Wars Rebels (2014-2018)', 'The Mandalorian (2019-present)', 'The Book of Boba Feet (2021-present)', 
+'Star Wars: Resistance (2018-2020)', 'Episode VII: The Force Awakens (2015)', 
+'Episode VIII: The Last Jedi (2017)', 'Episode IX: The Rise of Skywalker (2019)'];
+
+print_r($starwars[5] . PHP_EOL);
+
+
+/*б)*/
+
+$cinema = [
+    'ряд 1'=> [1,2,3,4,5,6,7,8,9,10],
+    'ряд 2'=> [1,2,3,4,5,6,7,8,9,10],
+    'ряд 3'=> [1,2,3,4,5,6,7,8,9,10],
+    'ряд 4'=> [1,2,3,4,5,6,7,8,9,10],
+    'ряд 5'=> [1,2,3,4,5,6,7,8,9,10],
+    'ряд 6'=> [1,2,3,4,5,6,7,8,9,10],
+    'ряд 7'=> [1,2,3,4,5,6,7,8,9,10],
+    'ряд 8'=> [1,2,3,4,5,6,7,8,9,10],
+    ];
+    print_r($cinema['ряд 1'][2] . PHP_EOL);
+    
+/*в)*/
+
+$mark = [
+    'biology'=> 5,
+    'physics'=> 4,
+    'math'=> 5,
+    'chemistry'=>3
+    ];
+    print_r($mark['biology'] . PHP_EOL);
+    
