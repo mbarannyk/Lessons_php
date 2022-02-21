@@ -11,14 +11,14 @@ $a = 5;
 $b = 10;
 $c = 15;
 // выводим большее из них
-if ($a > $b) {
-    if ($a > $c) {
+if ($a >= $b) {
+    if ($a >= $c) {
         echo "$a";
     } else {
         echo "$c";
     }
 } else {
-    if ($b > $c) {
+    if ($b >= $c) {
         echo "$b";
     } else {
         echo "$c\n";
@@ -26,14 +26,14 @@ if ($a > $b) {
   }
         
 // выводим меньшее из них
-if ($a < $b) {
-    if ($a < $c) {
+if ($a <= $b) {
+    if ($a <= $c) {
         echo "$a";
     } else {
         echo "$c";
 }
 }else {
-    if ($b < $c) {
+    if ($b <= $c) {
         echo "$b";
     } else {
         echo "$c\n";
@@ -46,4 +46,4 @@ if ($a == $b) {
                 
 echo "$a";
     }
-    }
+}
