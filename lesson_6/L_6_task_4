@@ -1,0 +1,41 @@
+<?php
+/*Написать  функцию которая принимает два аргумента, первый массив а вторым значение для поиска. 
+В случае если значение было найдено возвращает его ключ иначе false. пользоваться стандартной функцией 
+для поиска в массиве нельзя. Учтите что массив может быть многомерный.
+*/
+
+function search($array, $item) {
+    foreach ($array as $key => $val) { 
+        if (gettype($val) == "array") 
+                    {  foreach ($array as $key => $val) { 
+                    if (gettype($val) == "array") 
+                        { foreach ($array as $key => $val) { 
+                        if (gettype($val) == "array") { 
+                            foreach ($array as $key => $val) { 
+                            if (gettype($val) == "array") 
+                                { foreach ($array as $key => $val) { 
+                                if (gettype($val) == "array") {
+                                    return ('false');
+                                } elseif ($val == $item){
+                                return ($key);
+                                } 
+                                }                        
+                                }
+                                }
+                                }
+                                }
+                        }
+                    }
+    } else {return ('false');
+                    }
+        }
+    } 
+    
+
+    
+  
+
+
+$a = []; 
+	
+ var_dump(search($a, 'num'));
