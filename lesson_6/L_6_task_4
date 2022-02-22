@@ -9,14 +9,14 @@ function search($array, $item) {
         if (is_array($val)){
         foreach ($val as $k => $value) {
           if ($item == $value) {
-            echo "Array name: $key" . PHP_EOL;
-            echo "Key is: $k";
+            echo "$key\n";
+            echo "$k";
             return $k;
            }
         }
       } 
       else { if ($item == $val) {
-          echo "Key is: $key" . PHP_EOL;
+          echo "$key\n";
           return $key;
         }
       }
@@ -49,5 +49,3 @@ $cinema = [
 	
  var_dump(search($cinema, '5'));
   
-
-
