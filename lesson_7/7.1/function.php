@@ -8,7 +8,7 @@
             if (!$d) {
                 return;}
             while (false !== ($file = readdir($d))) {
-                if ($file == '.' || $file == '..') continue;
+                if ($file == '.' || $file == '..') {continue;}
             $pathF = $d .'/'. $file;
             if(is_dir($pathF)) {
                 echo " Direct: ".$file." ";
@@ -18,7 +18,7 @@
                 echo " File: ".$file." ";
                 }
             }
-            closedir($pathD);
+            closedir($d);
         }
             
-        DirContent($pathD);
+        DirContent("/home/maryano4ka/Документы/php-lessons/Lessons_php/lesson_7/7.1/Directory/Dir1/");
