@@ -25,8 +25,8 @@
         </div> 
          <!--Фото-->
          <div>
-            <h3> Фотография* <h3>
-          <input type="file" name="photo" multiple accept="image/*,image/jpeg" required/>
+            <h3> Фотография <h3>
+          <input type="file" name="photo" multiple accept="image/*,image/jpeg" />
         </div>   
         <!--Дата рождения, город проживания-->
         <div>

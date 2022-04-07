@@ -1,12 +1,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV-form</title>
 </head>
 <body>
-    <form action="/date_cv.php" method="post">
+    <form action="/date_cv.php" method="post" enctype="multipart/form-data">
     <h1>Резюме</h1>
     <p> (* - поле, обязательное для заполнения)</p>
     <p>Дата заполнения*: 
@@ -35,18 +33,22 @@
         </div> 
          <!--Фото-->
          <div>
-            <h3> Фотография* <h3>
+            <h3> Фотография <h3>
             <?php
-            $photo_name = $_FILES['photo']['name'];
-            $photo_tmp = $_FILES['photo']['tmp_name'];
-
-            if(move_uploaded_file($photo_tmp, "../photo/{$photo_name}")){
-            $link = "http://localhost/date_cv.php";
-            $path = $link.'photo/'.$photo_name;
-            $photo = '<img src="'.$path.'">';
-               echo $photo;
-            }
-            ?>
+            if (isset($_FILES['photo']['name'])&&$_FILES['photo']['size']>0) {
+                $photo_name = $_FILES['photo']['name'];
+                $photo_tmp = $_FILES['photo']['tmp_name'];
+                   if (move_uploaded_file($photo_tmp, "html/photo/{$photo_name}")) {
+                    $path="http://localhost/date_cv.php";
+                    $img_path=$path.'html/photo/'.$photo_name;
+                    $photo= '<img src="'.$img_path.'" width="100px">';
+                    echo $photo;
+                }else{
+                    echo 'Ошибка загрузки';
+                }
+                }else{ 
+                echo 'Фото не загрузилось';
+            }?> 
          </div>   
         <!--Дата рождения, город проживания-->
         <div>
