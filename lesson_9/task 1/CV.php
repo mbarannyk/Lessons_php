@@ -1,12 +1,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV-form</title>
 </head>
 <body>
-    <form action="/date_cv.php" method="post">
+    <form action="/date_cv.php" method="post" enctype="multipart/form-data">
     <h1>Резюме</h1>
     <p> (* - поле, обязательное для заполнения)</p>
     <p>Дата заполнения*: 
@@ -28,7 +26,7 @@
          <!--Фото-->
          <div>
             <h3> Фотография* <h3>
-          <input type="file" name="photo" required/>
+          <input type="file" name="photo" multiple accept="image/*,image/jpeg" required/>
         </div>   
         <!--Дата рождения, город проживания-->
         <div>
@@ -80,7 +78,7 @@
         <input type="radio" name="english" value="Могу проходить интервью" required/> Могу проходить интервью<br>
         <input type="radio" name="english" value="Свободно владею" required/> Свободно владею<br>
 </p>
-<input type="submit" name="отправить">
+<input type="submit" value="Отправить" name="отправить">
     </form>
 </body>
 </html>

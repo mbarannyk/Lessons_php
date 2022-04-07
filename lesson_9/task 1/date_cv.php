@@ -36,9 +36,17 @@
          <!--Фото-->
          <div>
             <h3> Фотография* <h3>
-                <?php 
-                $result = $_POST['photo'];?>
-                <img src="images/gallery/<?php echo $result; ?>.jpeg">
+            <?php
+            $photo_name = $_FILES['photo']['name'];
+            $photo_tmp = $_FILES['photo']['tmp_name'];
+
+            if(move_uploaded_file($photo_tmp, "../photo/{$photo_name}")){
+            $link = "http://localhost/date_cv.php";
+            $path = $link.'photo/'.$photo_name;
+            $photo = '<img src="'.$path.'">';
+               echo $photo;
+            }
+            ?>
          </div>   
         <!--Дата рождения, город проживания-->
         <div>
