@@ -7,3 +7,43 @@
 //    приймає як аргументи (string $title, Price $price)
 //    приймає як аргументи масив з полями 'title' і 'price'
 
+
+class Product {
+    public $title;
+    public $price;
+   
+    public function __construct(string $title, Price $price) {
+        $this->title = $title;
+        $this->price = $price;
+    }
+
+    static function arr(array $product) {
+        return new static ($product['title'],new Price($product['price']));
+    }
+}
+
+class Price { 
+
+    public int $price;
+    
+    //price have to be in coins!
+    
+    public function __construct(int $price) {
+        $this->price = $price;
+    }
+    
+    public function __toString(): string {
+        return (string) $this->price / 100 . ' UAH';
+    }
+        
+}
+
+    
+
+$product1 = new Product ('Chiken', new Price (5500));
+echo ($product1->title . ' ' . $product1->price . "\n");
+
+
+$product2 = Product::arr (['title'=>'Apple','price'=>1500]);
+echo ($product2->title . ' ' . $product2->price . "\n");
+
