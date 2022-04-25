@@ -44,6 +44,8 @@ $product1 = new Product ('Chiken', new Price (5500));
 echo ($product1->title . ' ' . $product1->price . "\n");
 
 
-$product2 = Product::arr (['title'=>'Apple','price'=>1500]);
+$a = array ('title'=>'Apple','price'=>1500);
+
+$product2 = Product::arr ($a);
 echo ($product2->title . ' ' . $product2->price . "\n");
 
