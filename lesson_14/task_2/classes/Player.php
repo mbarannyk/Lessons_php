@@ -12,19 +12,18 @@
         
             if (isset($_COOKIE['city'])) {
         $cities[] = $_COOKIE['city'];
-        setcookie($_GET['city'], serialize($cities), time()+3600);
-        $cities1 = unserialize($_COOKIE['city'], ["allowed_classes" => false]);
-        
+        setcookie($_GET['city'], serialize($cities), time()+900);
+       
         }  else {
             $cities[] = $_GET['city'];
-            setcookie($_GET['city'], serialize($cities), time()+3600);
-            $cities1 = unserialize($_COOKIE['city'], ["allowed_classes" => false]); 
+            setcookie($_GET['city'], serialize($cities), time()+900);
+           
     }  
      echo ($_GET['city']);
     
     }
     }
     
-    echo (PlayersCookie::SaveCookie($cities));
+   
     
     
