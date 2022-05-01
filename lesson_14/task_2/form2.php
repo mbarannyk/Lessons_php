@@ -25,7 +25,10 @@
         <input type="text" name="city" required/>
         
         </p>   
+ <input type="submit" value="Грати" name="Грати">
+</p>   
+    
        
-        <input type="submit" value="Грати" name="Грати">
+       
     </form>
 </body>
