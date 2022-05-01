@@ -5,7 +5,7 @@ $conn = new PDO("mysql:host=localhost; dbname=Cities", "root", "root");
 $word = $_GET['city'];
 $letter = mb_substr($word, -1);
 if (str_contains($letter, 'ь') || str_contains($letter, 'й')) {
-    $letter = mb_substr($word, -2);
+    $letter = mb_substr($word, -2, 1);
 }
 
 $result = $conn->query("SELECT name FROM Ukrainian_Cities WHERE name LIKE '$letter%' ORDER BY RAND()");
@@ -35,7 +35,7 @@ if (isset($_COOKIE['BotCity'])) {
 }  
 $letter1 = mb_substr($BotCity, -1);
 if (str_contains($letter1, 'ь') || str_contains($letter1, 'й')) {
-    $letter1 = mb_substr($BotCity, -2);
+    $letter1 = mb_substr($BotCity, -2, 1);
 }
 
 setcookie('letter', $letter, time()+900);
