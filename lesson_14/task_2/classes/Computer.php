@@ -1,5 +1,6 @@
 <?php
 
+
 $conn = new PDO("mysql:host=localhost; dbname=Cities", "root", "root");
 $word = $_GET['city'];
 $letter = mb_substr($word, -1);
