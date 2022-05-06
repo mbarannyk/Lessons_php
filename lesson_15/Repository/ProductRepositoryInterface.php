@@ -5,6 +5,8 @@ namespace App\Repository;
 use App\Exception\ProductAlreadyExsistException;
 use App\Model\Product;
 
+require '/home/maryano4ka/vendor/autoload.php';
+
 interface ProductRepositoryInterface
 {
     /**

@@ -1,6 +1,6 @@
 <?php
 
-require_once '/home/maryano4ka/vendor/autoload.php';
+require_once '/home/maryano4ka/Документы/php-lessons/Lessons_php/vendor/autoload.php';
 
 use App\Model\Price;
 use App\Model\Product;
