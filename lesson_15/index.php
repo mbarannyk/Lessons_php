@@ -1,31 +1,50 @@
-<?php
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#ProductForm').submit(function (event) {
+                event.preventDefault();
+                let product = {
+                    'id': $("#ProductForm input[name='id']").val(),
+                    'name': $("#ProductForm input[name='name']").val(),
+                    'price': $("#ProductForm input[name='price']").val(),
+                    'season': $("#ProductForm input[name='season']").val(),
+                };
 
-require_once '/home/maryano4ka/Документы/php-lessons/Lessons_php/vendor/autoload.php';
+                // console.dir(JSON.stringify(product));
+                $.ajax({
+                    url: '/addProduct.php',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(product)
+                })
+                    .done(function() {
+                    alert( "second success" );
+                })
+                    .fail(function() {
+                        alert( "error" );
+                    })
+                    .always(function() {
+                        alert( "finished" );
+                    });
 
-use App\Model\Price;
-use App\Model\Product;
-use App\Repository\ProductInMemoryRepository;
+            });
+        });
+    </script>
+</head>
+<body>
+<div>
+    <form id="ProductForm">
+        <label>№</label> <input type="number" name="id"></br>
+        <label>Назва продукту</label> <input type="text" name="name"></br>
+        <label>Ціна продукту</label> <input type="number" name="price" step="any"></br>
+        <label>Сезон</label> <input type="text" name="season"></br>
+        <input type="submit" value="Додати продукт" id="subAddProduct">
+        <input type="submit" value="Оновити продукт" id="UpdProduct">
+        <input type="submit" value="Видалити продукт" id="DelProduct">
+    </form>
+</div>
+</body>
+</html>
 
-$price = new Price(1500);
-$product = new Product(1, 'Apple', $price, 'Summer');
-
-$repository = new ProductInMemoryRepository();
-
-$repository->addProduct($product);
-echo 'Success';
-try {
-    $repository->addProduct($product);
-} catch (Exception $exception) {
-    echo 'Not success' . PHP_EOL;
-
-    var_dump($exception->getMessage() . PHP_EOL);
-} finally {
-    echo PHP_EOL . 'flow continue';
-}
-
-/*
- * 1. Дописать реализацию ProductInMemoryRepository
- * 2. Написать ProductInMySQLRepository - который будет работать не с массивом а с БД  (дамп БД на гите)
- * 3. Отобразить список товаров используя AJAX/jQuery
- * 4. Добавить новый товар используя AJAX/jQuery и при успешном ответе - сразу отобразить его в листинге
- */

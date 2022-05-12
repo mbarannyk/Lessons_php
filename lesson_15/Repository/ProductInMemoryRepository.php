@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Exception\ProductAlreadyExsistException;
 use App\Model\Product;
 use Exception;
+require_once '/home/maryano4ka/Документы/php-lessons/Lessons_php/vendor/autoload.php';
 
 class ProductInMemoryRepository implements ProductRepositoryInterface
 {
@@ -22,27 +23,34 @@ class ProductInMemoryRepository implements ProductRepositoryInterface
     {
         if (array_key_exists($product->getId(), $this->products)) {
             // error - already exist in storage
-            throw new ProductAlreadyExsistException('Product already exist');
+            throw new ProductAlreadyExsistException();
         }
 
         $this->products[$product->getId()] = $product;
-    }
-
-    /**
-     * @return array|Product[]
-     */
-    public function findAllProducts(): array
-    {
-        return $this->products;
+        $products[] = $product;
     }
 
     public function updateProduct(Product $product): void
     {
-
+        $this->products[$product->getId()]=$product;
+        echo 'Дані про продукт оновлено';
     }
 
     public function deleteProduct(Product $product): void
     {
-        // TODO: Implement deleteProduct() method.
+        if ($this->products[$product->getId()]=$product)
+        {
+            unset ($this->products[$product->getId()]);
+            echo 'Продукт видалено з бази';
+        };
+    }
+
+    public function ShowAllProducts()
+    {
+    foreach($this->products as $product)
+    {
+        print_r($product);
+        echo '<br>';
+    }
     }
 }

@@ -5,7 +5,6 @@ namespace App\Repository;
 use App\Exception\ProductAlreadyExsistException;
 use App\Model\Product;
 
-require '/home/maryano4ka/vendor/autoload.php';
 
 interface ProductRepositoryInterface
 {
@@ -16,7 +15,7 @@ interface ProductRepositoryInterface
      */
     public function addProduct(Product $product): void;
 
-    public function findAllProducts(): array;
+  
 
     /**
      * @param Product $product
