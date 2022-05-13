@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Model;
+
 // помножити всі елементи масиву на n (зазначений аргумент)
 // рекурсивно порахувати суму цифр числа (залишок на поділ)
 // порахувати суму всіх елементів масиву (array_reduce)
@@ -16,7 +18,7 @@ Class Task1
     {
         foreach ($arr as $num) {
             $newArr[] = $num * $n; 
-        } var_dump($newArr);
+        } return $newArr;
     }
 
     public function CountR ($number)
@@ -24,17 +26,15 @@ Class Task1
         do {
             $sum += $number % 10;
         } while ($number = $number / 10);
-        echo $sum;
+        return $sum;
     }
 
     public function CountArr ($arr) 
     {
-        function sum($carry, $item)
-        {
-            $carry += $item;
-            return $carry;
-        }
-        echo $sum = array_reduce($arr, 'sum');
+        $result = array_reduce($arr, function($carry, $item){
+            return $carry+$item;
+        });
+        return $result;
     }
 
     public function ArFilter ($arr, $n) 
@@ -45,7 +45,7 @@ Class Task1
             $newArr[] = $num;
             } 
         }
-        print_r($newArr);
+        return $newArr;
     } 
 }
 
