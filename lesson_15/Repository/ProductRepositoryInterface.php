@@ -29,5 +29,5 @@ interface ProductRepositoryInterface
      *
      * @throws ProductNotFoundException
      */
-    public function deleteProduct(Product $product): void;
+    public function deleteProduct(int $id): void;
 }
