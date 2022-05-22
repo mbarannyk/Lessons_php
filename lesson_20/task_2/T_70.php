@@ -9,11 +9,34 @@ use SplObject;
 
 Class T_70 implements SplSubject {
 
+    /**
+     * @var bool
+     */
     public bool $resultOfwork;
+    
+    /**
+     * @var array
+     */
     public array $moods;
-    protected int $currentMood;
+
+    /**
+     * @var int
+     */
+    public int $currentMood;
+
+    /**
+     * @var int
+     */
     public int $GoodJob = 0;
+
+    /**
+     * @var int
+     */
     public int $BadJob = 0;
+
+    /**
+     * @var array
+     */
     public array $observers;
 
      public function RandMood()
@@ -21,11 +44,18 @@ Class T_70 implements SplSubject {
         $this->currentMood = mt_rand(0, ($this->CountMoods() - 1));
     } 
     
+     /**
+     * @param array $moods
+     */
     public function __construct(array $moods)
     {
         $this->RandMood();
     }
-public function CountMoods(): int
+
+    /**
+     * @return int
+     */
+    public function CountMoods()
     {
         return count($this->moods);
     }
@@ -35,6 +65,10 @@ public function CountMoods(): int
        $this->moods[] = $mood;
     }
 
+     /**
+     * @param bool $resultOfwork
+     * @return bool
+     */
     public function ChangeOfMood ($currentMood, $resultOfwork) 
     {
         if (isset($this->currentMood) && $this->resultOfwork === 1) {
@@ -58,11 +92,17 @@ public function CountMoods(): int
         } 
     }
 
+     /**
+     * @param SplObserver $observer
+     */
      public function attach(\SplObserver $observer) 
     {
         $this->observers[] = $observer;
     }
        
+    /**
+     * @param SplObserver $observer
+     */
     public function detach(\SplObserver $observer) 
     {       
         $key = array_search($observer,$this->observers, true);
@@ -79,6 +119,9 @@ public function CountMoods(): int
         }
     }
 
+    /**
+     * @return int
+     */
     public function GoodJob($resultOfwork): int
     {
         if ($resultOfwork === 1) {
@@ -86,6 +129,9 @@ public function CountMoods(): int
         }
     }
 
+    /**
+     * @return int
+     */
     public function BadJob($resultOfwork): int
     {
         if ($resultOfwork === -1) {
