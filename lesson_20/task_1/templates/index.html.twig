@@ -1,0 +1,25 @@
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <title>Магазин "Фрукти-овочі"</title>
+    <script src="script.JS"></script>
+</head>
+<body>
+<div>
+    <form id="addProductForm" method="POST">
+    {% block form %}
+        <label>№</label></br><input type="text" name="id"></br>
+        <label>Назва продукту:</label></br><input type="text" name="name"></br>
+        <label>Ціна:</label></br><input type="text" name="price"></br>
+        <label>Сезон:</label></br><input type="text" name="season"></br>
+        <button id="submit" type="submit">Додати продукт</button>
+    {% endblock %}
+    </form>
+</div>
+    {% block products %}
+    {% endblock %}
+        </div>
+</body>
+</html>

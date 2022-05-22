@@ -1,0 +1,13 @@
+{% extends 'index.html.twig' %}
+
+{% block form %}
+
+ {% for product in products %}
+        <label>№</label></br><input type="id" value="{{product.id}}" name="id"></br>
+        <label>Назва продукту:</label></br><input type="name" value="{{product.name}}" name="name"></br>
+        <label>Ціна:</label></br><input type="price" value="{{product.price}}" name="price"></br>
+        <label>Сезон:</label></br><input type="season" value="{{product.season}}" name="season"></br>
+        <button id="submit" type="submit">Додати продукт</button>
+ {% endfor %}
+
+{% endblock %}
