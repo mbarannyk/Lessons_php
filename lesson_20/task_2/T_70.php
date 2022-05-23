@@ -25,23 +25,17 @@ Class T_70 implements SplSubject {
     public int $currentMood;
 
     /**
-     * @var int
-     */
-    public int $GoodJob = 0;
-
-    /**
-     * @var int
-     */
-    public int $BadJob = 0;
-
-    /**
      * @var array
      */
     public array $observers;
 
-     public function RandMood()
+
+     /**
+     * @return int
+     */
+     public function RandMood($moods)
     {
-        $this->currentMood = mt_rand(0, ($this->CountMoods() - 1));
+        $this->currentMood = mt_rand(0, ($this->CountMoods($this->moods) - 1));
     } 
     
      /**
@@ -49,13 +43,13 @@ Class T_70 implements SplSubject {
      */
     public function __construct(array $moods)
     {
-        $this->RandMood();
+        $this->RandMood($moods);
     }
 
     /**
      * @return int
      */
-    public function CountMoods()
+    public function CountMoods($moods)
     {
         return count($this->moods);
     }
@@ -67,29 +61,32 @@ Class T_70 implements SplSubject {
 
      /**
      * @param bool $resultOfwork
-     * @return bool
      */
-    public function ChangeOfMood ($currentMood, $resultOfwork) 
+    public function ChangeOfMood ($currentMood, $resultOfwork): void
     {
-        if (isset($this->currentMood) && $this->resultOfwork === 1) {
-            $newMood = $this->currentMood + 1; 
-                if (isset($this->moods[$newMood])) {
-                echo 'У Т-70 поменялось настроение на ' . $this->moods[$newMood];
-                $this->currentMood = $nextMood;
-                return true;
-            }
-            echo 'У Т-70 остается настроение' . $this->getCurrentMood();
-            return false;
-        } elseif (isset($this->currentMood) && $this->resultOfwork === -1) {
-            $newMood = $this->currentMood - 1; 
-                    if (isset($this->moods[$newMood])) {
-                    echo 'У Т-70 поменялось настроение на ' . $this->moods[$newMood];
-                    $this->currentMood = $nextMood;
-                return true;
-            }
-            echo 'У Т-70 остается настроение' . $this->getCurrentMood();
-            return false;
-        } 
+        if ($this->resultOfwork === 1) {
+            $this->RiseOfMood ($this->$currentMood); 
+        } elseif ($this->resultOfwork === 0) {
+            $this->FallOfMood ($this->$currentMood); 
+        }
+    }
+
+    /**
+     * @param int $newMood
+     */
+    public function RiseOfMood ($currentMood) 
+    {
+        $newMood = $this->currentMood + 1; 
+        echo 'У Т-70 настроение однозначно улучшилось!';
+    }
+
+    /**
+     * @param int $newMood
+     */
+    public function FallOfMood ($currentMood) 
+    {
+        $newMood = $this->currentMood - 1; 
+        echo 'У Т-70 настроение стало хуже(!';
     }
 
      /**
@@ -119,23 +116,6 @@ Class T_70 implements SplSubject {
         }
     }
 
-    /**
-     * @return int
-     */
-    public function GoodJob($resultOfwork): int
-    {
-        if ($resultOfwork === 1) {
-            return $this->$GoodJob++;
-        }
-    }
-
-    /**
-     * @return int
-     */
-    public function BadJob($resultOfwork): int
-    {
-        if ($resultOfwork === -1) {
-            return $this->$BadJob++;
-        }
-    }
+   
+   
 }

@@ -9,9 +9,22 @@ use SplSubject;
 
 class HR implements SplObserver
 {
+ 
+ /**
+  * @var bool
+  */
+public bool $resultOfwork;
     
+/**
+ * @var int
+ */
+public int $BadJob = 0;
+
 public function update(SplSubject $subject)
 {
-    echo 'Не ругайте Джуна...';
+    if ($this->resultOfwork === 0) {
+        return $this->BadJob++;
+        echo 'Не ругайте Джуна...';
+    }
 }
 }

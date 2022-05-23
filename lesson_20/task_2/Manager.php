@@ -9,9 +9,21 @@ use SplSubject;
 
 class Manager implements SplObserver
 {
-    
-public function update(SplSubject $subject)
-{
-    echo 'Ура, Джуна похвалили.';
+     /**
+     * @var bool
+     */
+    public bool $resultOfwork;
+
+    /**
+     * @var int
+     */
+    public int $GoodJob = 0;
+   
+    public function update(SplSubject $subject)
+    {
+        if ($this->resultOfwork === 1) {
+            return $this->GoodJob++;
+            echo 'Ура, Джуна похвалили!';
+    }
 }
 }

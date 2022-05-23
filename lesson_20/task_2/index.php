@@ -10,6 +10,10 @@ require_once '/var/www/vendor/autoload.php';
 $moods = ['Хорошее настроение', 'Нормальное Настроение', 'Плохое настроение',  'Состояние «не попадись на глаза»'];
 $TeamLead = new T_70 ($moods);
 
-$TeamLead->attach(new HR(), 'BadJob');
-$TeamLead->attach(new Manager(), 'GoodJob');
+$allen = new HR();
+$jim = new Manager();
+$linda = new Junior();
+
+$TeamLead->attach($allen);
+$TeamLead->attach($jim);
 
