@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+    nginx:
+        image: nginx:1.18.0
+        container_name: nginx
+        ports:
+          - "80:80"
+        volumes:
+          - ./:/var/www
+          - ./:/etc/nginx/conf.d
+          - ./data/logs:/var/log/nginx/
+        depends_on:
+          - php
+          - mysql
+    php:
+        build:
+          context: .
+          dockerfile: php-fpm/Dockerfile
+        container_name: php-fpm
+        volumes:
+          - ./:/var/www
+    php-cli:
+        build:
+          context: .
+          dockerfile: php-cli/Dockerfile
+        volumes:
+          - ./:/var/www/
+        container_name: php-cli
+        depends_on:
+          - php
+        
+    mysql:
+        image: mysql:8.0.29
+        container_name: mysql
+        restart: unless-stopped
+        ports:
+          - 3306:3306
+        environment:
+          MYSQL_ROOT_PASSWORD: root
