@@ -3,9 +3,14 @@
 namespace App;
 
 Class Junior 
-{
-    public static function ResultOfWork(): bool
+{ 
+ /**
+ * @var int
+ */
+public int $resultOfwork;
+
+    public function ResultOfWork() 
     {
-        return $resultOfwork = mt_rand(0, 1);
+        return $this->resultOfwork = mt_rand(0, 1);
     }
 }

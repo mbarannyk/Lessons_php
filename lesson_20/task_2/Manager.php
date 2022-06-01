@@ -18,10 +18,14 @@ class Manager implements SplObserver
      * @var int
      */
     public int $GoodJob = 0;
+
+    /**
+    * @param SplSubject $subject
+    */
    
     public function update(SplSubject $subject)
     {
-        if ($this->resultOfwork === 1) {
+        if ($this->resultOfwork = TRUE) {
             return $this->GoodJob++;
             echo 'Ура, Джуна похвалили!';
     }

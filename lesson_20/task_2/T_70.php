@@ -10,9 +10,9 @@ use SplObject;
 Class T_70 implements SplSubject {
 
     /**
-     * @var bool
+     * @var int
      */
-    public bool $resultOfwork;
+    public int $resultOfwork;
     
     /**
      * @var array
@@ -30,62 +30,65 @@ Class T_70 implements SplSubject {
     public array $observers;
 
 
-     /**
-     * @return int
-     */
-     public function RandMood($moods)
-    {
-        $this->currentMood = mt_rand(0, ($this->CountMoods($this->moods) - 1));
-    } 
-    
-     /**
+    /**
      * @param array $moods
      */
     public function __construct(array $moods)
     {
-        $this->RandMood($moods);
+        $this->moods = $moods;
     }
-
-    /**
+    
+       /**
      * @return int
      */
-    public function CountMoods($moods)
+    public function CountMoods()
     {
         return count($this->moods);
     }
+    
+ 
+     public function RandMood()
+    {
+       return $currentMood = mt_rand(0, ($this->CountMoods() - 1));
+    } 
     
     public function addNewMood(string $mood)
     {
        $this->moods[] = $mood;
     }
 
-     /**
-     * @param bool $resultOfwork
-     */
-    public function ChangeOfMood ($currentMood, $resultOfwork): void
+    //  /**
+    //  * @param int $resultOfwork
+    //  */
+    public function ChangeOfMood ()
     {
-        if ($this->resultOfwork === 1) {
-            $this->RiseOfMood ($this->$currentMood); 
-        } elseif ($this->resultOfwork === 0) {
-            $this->FallOfMood ($this->$currentMood); 
+        // $this->ResultOfWork();
+        if ($this->resultOfwork = 1) {
+            $this->RiseOfMood(); 
+        } else {
+            $this->FallOfMood(); 
         }
     }
 
     /**
      * @param int $newMood
      */
-    public function RiseOfMood ($currentMood) 
+    public function RiseOfMood() 
     {
-        $newMood = $this->currentMood + 1; 
+        $this->newMood = $newMood;
+        $this->RandMood();
+        $newMood = $currentMood + 1; 
         echo 'У Т-70 настроение однозначно улучшилось!';
-    }
+        echo $newMood;
+   
+}
 
     /**
      * @param int $newMood
      */
-    public function FallOfMood ($currentMood) 
+    public function FallOfMood() 
     {
-        $newMood = $this->currentMood - 1; 
+        $this->newMood = $this->currentMood - 1; 
         echo 'У Т-70 настроение стало хуже(!';
     }
 
@@ -110,7 +113,7 @@ Class T_70 implements SplSubject {
 
     public function notify(): void
     {
-        echo "Тема: Уведомление наблюдателей...\n";
+        echo "Тема: Произошло уведомление наблюдателей.\n";
         foreach ($this->observers as $observer) {
             $observer->update($this);
         }

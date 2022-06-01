@@ -20,9 +20,13 @@ public bool $resultOfwork;
  */
 public int $BadJob = 0;
 
+/**
+ * @param SplSubject $subject
+ */
+ 
 public function update(SplSubject $subject)
 {
-    if ($this->resultOfwork === 0) {
+    if ($this->resultOfwork  = FALSE) {
         return $this->BadJob++;
         echo 'Не ругайте Джуна...';
     }
