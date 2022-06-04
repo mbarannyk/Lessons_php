@@ -57,7 +57,7 @@
         "version": "v6.1.0"
     },
     "symfony/flex": {
-        "version": "2.1",
+        "version": "2.2",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "main",
@@ -94,13 +94,13 @@
         "version": "v6.1.0"
     },
     "symfony/polyfill-intl-grapheme": {
-        "version": "v1.25.0"
+        "version": "v1.26.0"
     },
     "symfony/polyfill-intl-normalizer": {
-        "version": "v1.25.0"
+        "version": "v1.26.0"
     },
     "symfony/polyfill-mbstring": {
-        "version": "v1.25.0"
+        "version": "v1.26.0"
     },
     "symfony/routing": {
         "version": "6.1",
