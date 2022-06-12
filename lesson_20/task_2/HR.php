@@ -9,12 +9,7 @@ use SplSubject;
 
 class HR implements SplObserver
 {
- 
- /**
-  * @var bool
-  */
-public bool $resultOfwork;
-    
+     
 /**
  * @var int
  */
@@ -23,12 +18,19 @@ public int $BadJob = 0;
 /**
  * @param SplSubject $subject
  */
- 
+
+public function ExtremeState(SplSubject $subject){
+    if ($subject->NewMood() == 0) {
+        $this->BadJob++;
+    }
+}
+
 public function update(SplSubject $subject)
 {
-    if ($this->resultOfwork  = FALSE) {
-        return $this->BadJob++;
-        echo 'Не ругайте Джуна...';
-    }
+    $this->ExtremeState($subject);
+}
+
+public function DisplayResult(){
+    echo 'HR посчитал, что Джун получил выговор ' . $this->BadJob . ' раз.';
 }
 }

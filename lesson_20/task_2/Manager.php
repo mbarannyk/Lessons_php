@@ -10,24 +10,28 @@ use SplSubject;
 class Manager implements SplObserver
 {
      /**
-     * @var bool
-     */
-    public bool $resultOfwork;
-
-    /**
      * @var int
      */
     public int $GoodJob = 0;
 
-    /**
-    * @param SplSubject $subject
-    */
+    // /**
+    // * @param SplSubject $subject
+    // */
    
+    public function ExtremeState(SplSubject $subject){
+        if ($subject->NewMood() == $subject->CountMoods() - 1) {
+            $this->GoodJob++;
+        }
+    }
+
     public function update(SplSubject $subject)
     {
-        if ($this->resultOfwork = TRUE) {
-            return $this->GoodJob++;
-            echo 'Ура, Джуна похвалили!';
+        $this->ExtremeState($subject);
     }
-}
+    
+    public function DisplayResult(){
+        echo 'Менеджер посчитал, что Джуна похвалили ' . $this->GoodJob . " раз.<br />";
+    }
+
+    
 }

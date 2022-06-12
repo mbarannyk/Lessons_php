@@ -80,10 +80,11 @@ class T_70 implements SplSubject
         $this->newMood = $this->RandMood() + 1;
         foreach ($this->moods as $key => $value) {
             if ($this->newMood == $key) {
-                echo "У Т-70 настроение улучшилось!<br />" . 'Было состояние: ' . $this->moods[$this->newMood - 1] . '. Теперь у Т-70 ' . $value . '!';
+                echo "У Т-70 настроение улучшилось!<br />" . 'Было состояние: ' . $this->moods[$this->newMood - 1] . '. Теперь у Т-70 ' . $value . "!<br />";
                 return;
             }  elseif ($this->newMood == $this->CountMoods()) {
-                echo "У Т-70 настроение улучшилось, хотя лучше некуда!<br />" . ' Поэтому у Т-70 осталось ' . $this->moods[$this->CountMoods()-1] . '!';
+                $this->newMood = $this->CountMoods() - 1;
+                echo "У Т-70 настроение улучшилось, хотя лучше некуда!<br />" . ' Поэтому у Т-70 осталось ' . $this->moods[$this->CountMoods()-1] . "!<br />";
                 return;
             }
         }
@@ -97,13 +98,18 @@ class T_70 implements SplSubject
         $this->newMood = $this->RandMood() - 1; 
         foreach ($this->moods as $key => $value) {
             if ($this->newMood == $key) {
-                echo "У Т-70 настроение стало хуже!<br />" . 'Было состояние: ' . $this->moods[$this->newMood + 1] . '. Теперь у Т-70 ' . $value . '!';
+                echo "У Т-70 настроение стало хуже!<br />" . 'Было состояние: ' . $this->moods[$this->newMood + 1] . '. Теперь у Т-70 ' . $value . "!<br />";
                 return;
             }  elseif ($this->newMood < 0) {
-                echo "У Т-70 настроение стало хуже, хотя хуже некуда!<br />" . ' Поэтому у Т-70 осталось ' . $this->moods[0] . '!';
+                $this->newMood = 0;
+                echo "У Т-70 настроение стало хуже, хотя хуже некуда!<br />" . ' Поэтому у Т-70 осталось ' . $this->moods[0] . "!<br />";
                 return;
             }
         }
+    }
+
+    public function NewMood(){
+       return $this->newMood;
     }
 
      /**
@@ -131,8 +137,5 @@ class T_70 implements SplSubject
         foreach ($this->observers as $observer) {
             $observer->update($this);
         }
-    }
-
-   
-   
+    }  
 }
