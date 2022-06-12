@@ -7,7 +7,8 @@ use App\HR;
 use SplSubject;
 use SplObject;
 
-Class T_70 implements SplSubject {
+class T_70 implements SplSubject
+{
 
     /**
      * @var int
@@ -38,7 +39,7 @@ Class T_70 implements SplSubject {
         $this->moods = $moods;
     }
     
-       /**
+    /**
      * @return int
      */
     public function CountMoods()
@@ -47,49 +48,62 @@ Class T_70 implements SplSubject {
     }
     
  
-     public function RandMood()
+    public function RandMood()
     {
-       return $currentMood = mt_rand(0, ($this->CountMoods() - 1));
-    } 
+        $this->currentMood = mt_rand(0, ($this->CountMoods() - 1));
+        return $this->currentMood;
+    }
     
     public function addNewMood(string $mood)
     {
-       $this->moods[] = $mood;
+        $this->moods[] = $mood;
     }
 
     //  /**
     //  * @param int $resultOfwork
     //  */
-    public function ChangeOfMood ()
+    public function ChangeOfMood()
     {
-        // $this->ResultOfWork();
-        if ($this->resultOfwork = 1) {
-            $this->RiseOfMood(); 
+        $junior = new Junior;
+        if ($junior->ResultOfWork() === 1) {
+            $this->RiseOfMood();
         } else {
-            $this->FallOfMood(); 
+            $this->FallOfMood();
         }
     }
 
     /**
      * @param int $newMood
      */
-    public function RiseOfMood() 
+    public function RiseOfMood()
     {
-        $this->newMood = $newMood;
-        $this->RandMood();
-        $newMood = $currentMood + 1; 
-        echo 'У Т-70 настроение однозначно улучшилось!';
-        echo $newMood;
-   
-}
+        $this->newMood = $this->RandMood() + 1;
+        foreach ($this->moods as $key => $value) {
+            if ($this->newMood == $key) {
+                echo "У Т-70 настроение улучшилось!<br />" . 'Было состояние: ' . $this->moods[$this->newMood - 1] . '. Теперь у Т-70 ' . $value . '!';
+                return;
+            }  elseif ($this->newMood == $this->CountMoods()) {
+                echo "У Т-70 настроение улучшилось, хотя лучше некуда!<br />" . ' Поэтому у Т-70 осталось ' . $this->moods[$this->CountMoods()-1] . '!';
+                return;
+            }
+        }
+    }
 
     /**
      * @param int $newMood
      */
     public function FallOfMood() 
     {
-        $this->newMood = $this->currentMood - 1; 
-        echo 'У Т-70 настроение стало хуже(!';
+        $this->newMood = $this->RandMood() - 1; 
+        foreach ($this->moods as $key => $value) {
+            if ($this->newMood == $key) {
+                echo "У Т-70 настроение стало хуже!<br />" . 'Было состояние: ' . $this->moods[$this->newMood + 1] . '. Теперь у Т-70 ' . $value . '!';
+                return;
+            }  elseif ($this->newMood < 0) {
+                echo "У Т-70 настроение стало хуже, хотя хуже некуда!<br />" . ' Поэтому у Т-70 осталось ' . $this->moods[0] . '!';
+                return;
+            }
+        }
     }
 
      /**
@@ -113,7 +127,7 @@ Class T_70 implements SplSubject {
 
     public function notify(): void
     {
-        echo "Тема: Произошло уведомление наблюдателей.\n";
+        echo "Тема: Произошло уведомление наблюдателей о результате работы Джуниора.<br />";
         foreach ($this->observers as $observer) {
             $observer->update($this);
         }

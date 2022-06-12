@@ -8,7 +8,7 @@ use App\Manager;
 require_once '/var/www/vendor/autoload.php';
 
 
-$TeamLead = new T_70 (['Хорошее настроение', 'Нормальное Настроение', 'Плохое настроение',  'Состояние «не попадись на глаза»']);
+$TeamLead = new T_70 (['состояние «не попадись на глаза»', 'плохое настроение', 'нормальное настроение', 'хорошее настроение']);
 
 $allen = new HR();
 $jim = new Manager();
@@ -21,6 +21,7 @@ $TeamLead->attach($jim);
 
 $TeamLead->notify();
 
+$TeamLead->RandMood();
 $TeamLead->ChangeOfMood();
 
 
