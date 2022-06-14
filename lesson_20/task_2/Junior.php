@@ -7,10 +7,10 @@ Class Junior
  /**
  * @var int
  */
-public int $resultOfwork;
+private static int $resultOfwork;
 
-    public function ResultOfWork() 
+    static public function ResultOfWork() 
     {
-        return $this->resultOfwork = mt_rand(0, 1);
+        return self::$resultOfwork = mt_rand(0, 1);
     }
 }

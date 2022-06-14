@@ -7,7 +7,7 @@ use App\HR;
 use SplSubject;
 use SplObject;
 
-class T_70 implements SplSubject
+class T_70 implements \SplSubject
 {
 
     /**
@@ -46,7 +46,6 @@ class T_70 implements SplSubject
     {
         return count($this->moods);
     }
-    
  
     public function RandMood()
     {
@@ -59,17 +58,14 @@ class T_70 implements SplSubject
         $this->moods[] = $mood;
     }
 
-    //  /**
-    //  * @param int $resultOfwork
-    //  */
-    public function ChangeOfMood()
+    public function ChangeOfMood(int $resultOfwork)
     {
-        $junior = new Junior;
-        if ($junior->ResultOfWork() === 1) {
+        if ($resultOfwork === 1) {
             $this->RiseOfMood();
         } else {
             $this->FallOfMood();
         }
+        $this->notify();
     }
 
     /**
@@ -131,6 +127,9 @@ class T_70 implements SplSubject
         }
     }
 
+    /**
+     * @param SplObserver $observers
+     */
     public function notify(): void
     {
         echo "Тема: Произошло уведомление наблюдателей о результате работы Джуниора.<br />";

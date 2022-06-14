@@ -14,15 +14,13 @@ $allen = new HR();
 $jim = new Manager();
 $linda = new Junior();
 
-$linda->ResultOfWork();
-$TeamLead->RandMood();
-$TeamLead->ChangeOfMood();
-$TeamLead->NewMood();
-
 $TeamLead->attach($allen);
 $TeamLead->attach($jim);
-$TeamLead->notify();
 
+$linda->ResultOfWork();
+$TeamLead->RandMood();
+$TeamLead->ChangeOfMood(Junior::ResultOfWork());
+$TeamLead->NewMood();
 
 $jim->DisplayResult(); 
 $allen->DisplayResult(); 
