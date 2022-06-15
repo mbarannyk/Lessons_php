@@ -19,7 +19,7 @@ class Manager implements SplObserver
     // */
    
     public function ExtremeState(SplSubject $subject){
-        if ($subject->NewMood() == $subject->CountMoods() - 1) {
+        if ($subject->ReturnNewMood() == $subject->CountMoods() - 1) {
             $this->GoodJob++;
         }
     }

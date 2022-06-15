@@ -73,7 +73,11 @@ class T_70 implements \SplSubject
      */
     public function RiseOfMood()
     {
-        $this->newMood = $this->RandMood() + 1;
+        if (isset($this->newMood)){
+            $this->newMood = $this->newMood + 1; 
+        } else {
+            $this->newMood = $this->RandMood() + 1;
+        }
         foreach ($this->moods as $key => $value) {
             if ($this->newMood == $key) {
                 echo "У Т-70 настроение улучшилось!<br />" . 'Было состояние: ' . $this->moods[$this->newMood - 1] . '. Теперь у Т-70 ' . $value . "!<br />";
@@ -91,7 +95,11 @@ class T_70 implements \SplSubject
      */
     public function FallOfMood() 
     {
-        $this->newMood = $this->RandMood() - 1; 
+        if (isset($this->newMood)){
+            $this->newMood =  $this->newMood - 1; 
+        } else {
+            $this->newMood = $this->RandMood() - 1;
+        }
         foreach ($this->moods as $key => $value) {
             if ($this->newMood == $key) {
                 echo "У Т-70 настроение стало хуже!<br />" . 'Было состояние: ' . $this->moods[$this->newMood + 1] . '. Теперь у Т-70 ' . $value . "!<br />";
@@ -104,7 +112,7 @@ class T_70 implements \SplSubject
         }
     }
 
-    public function NewMood(){
+    public function ReturnNewMood(){
        return $this->newMood;
     }
 
@@ -132,7 +140,7 @@ class T_70 implements \SplSubject
      */
     public function notify(): void
     {
-        echo "Тема: Произошло уведомление наблюдателей о результате работы Джуниора.<br />";
+        echo "Тема: Произошло уведомление наблюдателей о результате работы Джуниора.<br /><br />";
         foreach ($this->observers as $observer) {
             $observer->update($this);
         }

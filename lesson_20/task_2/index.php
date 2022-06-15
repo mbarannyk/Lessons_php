@@ -20,7 +20,17 @@ $TeamLead->attach($jim);
 $linda->ResultOfWork();
 $TeamLead->RandMood();
 $TeamLead->ChangeOfMood(Junior::ResultOfWork());
-$TeamLead->NewMood();
+$TeamLead->ReturnNewMood();
+
+$linda->ResultOfWork();
+$TeamLead->ChangeOfMood(Junior::ResultOfWork());
+$TeamLead->ReturnNewMood();
+
+$linda->ResultOfWork();
+$TeamLead->ChangeOfMood(Junior::ResultOfWork());
+$TeamLead->ReturnNewMood();
+
+
 
 $jim->DisplayResult(); 
 $allen->DisplayResult(); 

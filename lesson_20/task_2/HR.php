@@ -20,7 +20,7 @@ public int $BadJob = 0;
  */
 
 public function ExtremeState(SplSubject $subject){
-    if ($subject->NewMood() == 0) {
+    if ($subject->ReturnNewMood() == 0) {
         $this->BadJob++;
     }
 }
